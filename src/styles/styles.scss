@@ -1,0 +1,304 @@
+$main : #0E6655;
+$error : red;
+$success : green;
+$white : white;
+$grey1: whitesmoke;
+$grey2: lightgrey;
+$grey3: grey;
+$black : black;
+$digits: darkslategray;
+$cancel : darkred;
+$clear : darkorange;
+$enter : darkgreen;
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $grey2;
+  font-family: Verdana, sans-serif;
+  color: $black;
+}
+
+.container {  
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;  
+  min-width: 320px;
+  margin: 0 auto;  
+  padding: 20px;
+  text-align: center;
+
+  .atm-screen {     
+    position: relative;
+    flex-grow: 1;
+    max-width: 600px;
+    height: 400px;       
+    padding: 30px;
+    border: 1px solid $grey3;
+    border-radius: 20px;
+    background: $white;
+    box-sizing: border-box;
+    box-shadow: inset 1px 1px 10px $grey3;
+
+    &.action-selector {
+      .flex-container {
+        height: 150px;
+      }
+    }
+
+    &.depositing {
+      .flex-container {
+        height: 200px;
+      }
+    }
+
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 270px;     
+
+      h2 {        
+        color: $main;
+        font-size: 20px;
+      }
+  
+      p {
+        margin: 20px 0;
+        font-size: 18px;
+      } 
+
+      .account-balance {        
+        order: -2;
+        
+        h2, p {
+          margin: 5px 0;
+        }
+      }       
+      
+      .status-icon {
+        order: -1;
+        margin: 10px auto 0;
+        font-size: 30px;
+        line-height: 44px;
+        border-radius: 50%;
+        width: 46px;
+        height: 46px;       
+
+        &.success{
+          border: 2px solid $success;
+          color: $success;
+        }
+
+        &.error{
+          border: 2px solid $error;
+          color: $error;
+        }
+      }    
+  
+      .amount-input {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;  
+        font-size: 18px;     
+  
+        input {        
+          margin-right: 10px;
+          height: 36px;
+          width: 170px;
+          padding: 0 10px;
+          border: 1px solid $black;
+          line-height: 30px;    
+          border-radius: 7px; 
+          font-family: 'Courier New', monospace;
+          font-weight: bold;
+          font-size: 20px;
+          text-align: right;   
+          -moz-appearance: textfield;
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+      }
+  
+      .fast-withdraw {      
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;      
+        margin-top: 10px;
+  
+        button {        
+          height: 38px;
+          margin: 5px 5px;
+          padding: 0 10px;
+          border: none;
+          border-radius: 5px;           
+          font-size: 16px;   
+          font-weight: bold;     
+          line-height: 37px;          
+          background: $main;
+          color: $white;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .buttons { 
+      .left-buttons {
+        position: absolute;        
+        left: 0;
+        bottom: 20px;
+
+        button {
+          margin-right: auto;
+        }
+      }
+
+      .right-buttons {
+        position: absolute;        
+        right: 0;
+        bottom: 20px;
+
+        button {
+          margin-left: auto;
+        }
+      }
+
+      button {     
+        display: flex;  
+        align-items: center;         
+        height: 46px;
+        margin-top: 20px;                
+        font-size: 16px;
+        line-height: 44px;
+        border: none;
+        background: none;  
+        cursor: pointer;              
+
+        span {    
+          line-height: 1.2;  
+           
+          font-weight: bold; 
+          color: $main;               
+
+          &.icon {
+            flex-shrink: 0;
+            height: 46px;
+            width: 46px;
+            margin: 0 5px;          
+            font-size: 40px;
+            line-height: 37px;  
+            border-radius: 5px;
+            background: $main;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .keyboard {
+    display: flex;
+    flex-grow: 0;
+    justify-content: space-between;
+    width: 250px;
+    margin: 0 auto;
+    padding: 20px;   
+
+    button {
+      height: 46px;
+      margin: 2px;
+      border-radius: 23px;
+      border: 1px solid $grey3;
+      box-shadow: 0px 2px 5px $grey3;
+      background: $grey1;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 44px;
+      color: $digits;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+        background: $grey2;
+        box-shadow: none;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+    }
+
+    .digits {
+      display: flex;
+      flex-wrap: wrap;    
+      width: 160px;  
+
+      button {
+        width: 46px;        
+      }
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        width: 80px;  
+        text-transform: uppercase;    
+        font-size: 15px;  
+
+        &.cancel {
+          border-color: $cancel;
+          color: $cancel;
+        }
+
+        &.clear {
+          border-color: $clear;
+          color: $clear;
+        }
+
+        &.enter {
+          border-color: $enter;
+          color: $enter;
+        }
+      }
+    }
+  }  
+}
+
+@media (max-width: 800px) {
+  .container { 
+    flex-direction: column;
+    align-items: stretch;
+
+    .atm-screen {
+      max-width: unset;   
+         
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .container { 
+    .atm-screen {
+      height: 470px;
+
+      .flex-container {
+        height: 300px;
+      }
+      &.error {
+        .buttons {
+          button {
+            font-size: 15px;
+            max-width: 170px
+          }
+        }
+      }
+    }
+  }
+}
